@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Us</title>
+
+    <!-- INTERNAL CSS -->
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing: border-box;
+        }
+
+        body{
+            background:#f2f2f2;
+            font-family: Arial;
+        }
+
+        .contact-container{
+            width:100%;
+            padding:40px 0;
+        }
+
+        .contact-container h2{
+            text-align:center;
+            font-size:32px;
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        .contact-box{
+            width:400px;
+            margin:auto;
+            background:white;
+            padding:20px;
+            border-radius:8px;
+            box-shadow:0 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .contact-box label{
+            font-size:17px;
+            margin-top:10px;
+            display:block;
+        }
+
+        .contact-box input,
+        .contact-box textarea{
+            width:100%;
+            padding:10px;
+            margin-top:5px;
+            border:1px solid #aaa;
+            border-radius:5px;
+            font-size:16px;
+        }
+
+        .contact-box textarea{
+            height:100px;
+            resize:none;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            margin-top:15px;
+            background:#5da0ec;
+            color:white;
+            font-size:18px;
+            border:none;
+            border-radius:5px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#3e84d6;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- CONTACT US SECTION -->
+    <div class="contact-container">
+        <h2>Contact Us</h2>
+
+        <div class="contact-box">
+
+            <label>Name</label>
+            <input type="text" id="cname" placeholder="Enter your name">
+
+            <label>Email</label>
+            <input type="email" id="cemail" placeholder="Enter your email">
+
+            <label>Phone</label>
+            <input type="number" id="cphone" placeholder="Enter your number">
+
+            <label>Message</label>
+            <textarea id="cmessage" placeholder="Write message"></textarea>
+
+            <button id="sendMessage">Send Message</button>
+        </div>
+    </div>
+
+    <!-- INTERNAL JAVASCRIPT -->
+    <script>
+        document.getElementById("sendMessage").addEventListener("click", function(){
+
+            let name = document.getElementById("cname").value.trim();
+            let email = document.getElementById("cemail").value.trim();
+            let phone = document.getElementById("cphone").value.trim();
+            let msg = document.getElementById("cmessage").value.trim();
+
+            if(!name || !email || !phone || !msg){
+                alert("⚠ Please fill all fields");
+                return;
+            }
+
+            if(phone.length != 10){
+                alert("⚠ Phone number must be 10 digits");
+                return;
+            }
+
+            alert("✅ Message sent successfully!");
+
+            // Clear after sending
+            document.getElementById("cname").value = "";
+            document.getElementById("cemail").value = "";
+            document.getElementById("cphone").value = "";
+            document.getElementById("cmessage").value = "";
+
+        });
+    </script>
+
+</body>
+</html>
