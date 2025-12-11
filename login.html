@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account</title>
+
+    <style>
+        /* ========= CSS START ========= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f2f2f2;
+        }
+
+        #accountBtn {
+            padding: 10px 20px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px;
+            font-size: 16px;
+        }
+
+        .account-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.4);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .account-box {
+            width: 320px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+        }
+
+        .account-box h2 {
+            text-align: center;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .account-box input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 12px;
+            border: 1px solid #aaa;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+
+        #submitAccount {
+            width: 100%;
+            padding: 10px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 15px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        #closePopup {
+            width: 100%;
+            padding: 10px;
+            background: red;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* ========= CSS END ========= */
+    </style>
+
+</head>
+<body>
+
+    <!-- Account Button -->
+    <button id="accountBtn">My Account</button>
+
+    <!-- Popup -->
+    <div class="account-popup" id="accountPopup">
+        <div class="account-box">
+            <h2>Create Account</h2>
+
+            <input type="text" id="name" placeholder="Enter Your Name">
+            <input type="text" id="mobile" placeholder="Enter Mobile Number">
+            <input type="email" id="email" placeholder="Enter Email">
+            <input type="password" id="password" placeholder="Enter Password">
+
+            <button id="submitAccount">Submit</button>
+            <button id="closePopup">Close</button>
+        </div>
+    </div>
+
+    <!-- ========= JS START ========= -->
+    <script>
+
+        // OPEN POPUP
+        document.getElementById("accountBtn").addEventListener("click", function () {
+            document.getElementById("accountPopup").style.display = "flex";
+        });
+
+        // CLOSE POPUP
+        document.getElementById("closePopup").addEventListener("click", function () {
+            document.getElementById("accountPopup").style.display = "none";
+        });
+
+        // SUBMIT
+        document.getElementById("submitAccount").addEventListener("click", function () {
+            let name = document.getElementById("name").value.trim();
+            let mobile = document.getElementById("mobile").value.trim();
+            let email = document.getElementById("email").value.trim();
+            let password = document.getElementById("password").value.trim();
+
+            if (!name || !mobile || !email || !password) {
+                alert("Please fill all fields!");
+                return;
+            }
+
+            if (mobile.length != 10) {
+                alert("Mobile number must be 10 digits!");
+                return;
+            }
+
+            alert("🎉 Account Created Successfully!");
+            document.getElementById("accountPopup").style.display = "none";
+        });
+
+    </script>
+    <!-- ========= JS END ========= -->
+
+</body>
+</html>
